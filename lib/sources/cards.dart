@@ -44,31 +44,32 @@ class _VideoCardsState extends State<VideoCards> {
     return AssetImage('assets/placeholder_image.png');
   }
 
-  Widget _buildAvailabilityIcon(bool available) {
-    return GestureDetector(
-      onTap: () {
-        if (available) {
-          setState(() {
-            isSelected = !isSelected;
-            widget.onSelected(isSelected);
-          });
-        } else {
-          // Show a Snackbar if the profile is not available
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text("This person is not available."),
-              duration: Duration(seconds: 2),
-            ),
-          );
-        }
-      },
-      child: Icon(
-        available ? Icons.check_circle : Icons.cancel,
-        color: available ? Colors.green : Colors.red,
-        size: 20,
-      ),
-    );
-  }
+ Widget _buildAvailabilityIcon(bool available) {
+  return GestureDetector(
+    onTap: () {
+      if (available) {
+        setState(() {
+          isSelected = !isSelected;
+          widget.onSelected(isSelected);
+        });
+      } else {
+        // Show a Snackbar if the profile is not available
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("This person is not available."),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
+    },
+    child: Icon(
+      available ? Icons.check_circle : Icons.cancel,
+      color: available ? Colors.green : Colors.red,
+      size: 20,
+    ),
+  );
+}
+
 
   @override
   Widget build(BuildContext context) {
